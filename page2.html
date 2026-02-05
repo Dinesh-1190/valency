@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Are You Sure? ❤️</title>
+  <link rel="stylesheet" href="page2.css">
+</head>
+<body>
+
+  <div class="box">
+    <!-- You can change image -->
+    <img src="img1.png" alt="Love Image">
+
+    <h1 id="question">Will you be my Valentine? ❤️</h1>
+
+    <button id="yesBtn">YES</button>
+  </div>
+
+  <script>
+    const yesBtn = document.getElementById("yesBtn");
+    const question = document.getElementById("question");
+
+    let clickCount = 0;
+
+    yesBtn.addEventListener("click", () => {
+      clickCount++;
+
+      if (clickCount === 1) {
+        // First trick
+        question.innerText = "Wait 😳 Are you REALLY sure?";
+        yesBtn.innerText = "YES (I mean it)";
+        yesBtn.style.transform = "scale(0.8)";
+      }
+      else if (clickCount === 2) {
+        // Second trick
+        question.innerText = "Okay 😌 One last time...";
+        yesBtn.innerText = "YES (forever)";
+        yesBtn.style.transform = "scale(1.2)";
+      }
+      else {
+        // Final romantic reveal
+        document.body.innerHTML = `
+          <div class="final">
+            <h1>I love you ❤️</h1>
+            <p>Happy Valentine’s Day 🌹</p>
+          </div>
+        `;
+      }
+    });
+  </script>
+
+</body>
+</html>
