@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Do You Love Me?</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <div class="card">
+      <img src="cat." alt="Cute Cat" class="cat-img">
+
+      <h1>DO you love me? 🥰</h1>
+      <p class="sub-text">~ Devi is all yours</p>
+
+      <div class="btn-group">
+        <button class="btn yes">Yes</button>
+        <button class="btn no">No</button>
+      </div>
+    </div>
+  </div>
+<script>
+  const noBtn = document.querySelector(".no");
+  const yesBtn = document.querySelector(".yes");
+
+  let scaleValue = 1;
+
+  // NO button behavior
+  noBtn.addEventListener("click", () => {
+    // Random position for NO
+    const maxX = window.innerWidth - noBtn.offsetWidth;
+    const maxY = window.innerHeight - noBtn.offsetHeight;
+
+    const randomX = Math.random() * maxX;
+    const randomY = Math.random() * maxY;
+
+    noBtn.style.position = "absolute";
+    noBtn.style.left = randomX + "px";
+    noBtn.style.top = randomY + "px";
+
+    // YES grows bigger
+    scaleValue += 1.7;
+    yesBtn.style.scale = scaleValue;
+
+    // Check if YES covers ~90% of screen
+    const yesRect = yesBtn.getBoundingClientRect();
+    const screenArea = window.innerWidth * window.innerHeight;
+    const yesArea = yesRect.width * yesRect.height;
+
+    if (yesArea >= screenArea * 0.9) {
+      noBtn.style.display = "none";
+      noBtn.style.pointerEvents = "none";
+    }
+  });
+
+  // YES works anytime (even first click)
+  yesBtn.addEventListener("click", () => {
+    window.location.href = "page2.html";
+  });
+</script>
+</body>
+</html>
